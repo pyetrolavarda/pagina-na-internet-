@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patrick Jane — Compêndio Definitivo de Mentalismo & Psicologia Comportamental</title>
+  <title>Patrick Jane — Plataforma Definitiva de Mentalismo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-primary: #08090c;
-      --bg-secondary: #0f1117;
-      --bg-card: rgba(18, 22, 32, 0.85);
+      --bg-primary: #07080b;
+      --bg-secondary: #0e1117;
+      --bg-card: rgba(18, 22, 32, 0.88);
+      --bg-card-hover: rgba(26, 31, 46, 0.95);
       --accent-gold: #d4af37;
       --accent-gold-light: #f3e5ab;
-      --accent-gold-glow: rgba(212, 175, 55, 0.25);
+      --accent-gold-glow: rgba(212, 175, 55, 0.3);
       --accent-crimson: #991b1b;
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
@@ -36,9 +37,9 @@
       line-height: 1.8;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 60%),
-        radial-gradient(circle at 90% 40%, rgba(153, 27, 27, 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 10% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 90% 40%, rgba(153, 27, 27, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
     }
 
     ::-webkit-scrollbar {
@@ -52,11 +53,12 @@
       border-radius: 4px;
     }
 
+    /* Header & Navbar */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(8, 9, 12, 0.92);
+      background: rgba(7, 8, 11, 0.92);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border-color);
     }
@@ -101,6 +103,7 @@
       text-shadow: 0 0 8px var(--accent-gold-glow);
     }
 
+    /* Hero */
     .hero {
       position: relative;
       padding: 5rem 2rem 3rem;
@@ -165,15 +168,46 @@
       font-size: 0.95rem;
     }
 
+    /* Filters */
+    .filter-container {
+      max-width: 1300px;
+      margin: 1rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.1);
+      box-shadow: 0 0 10px var(--accent-gold-glow);
+    }
+
+    /* Grid Layout */
     .container {
       max-width: 1300px;
-      margin: 3rem auto;
+      margin: 2rem auto 4rem;
       padding: 0 2rem;
       display: grid;
-      grid-template-columns: 2.8fr 1.2fr;
+      grid-template-columns: 2.7fr 1.3fr;
       gap: 3.5rem;
     }
 
+    /* Articles */
     article.post-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -183,12 +217,13 @@
       position: relative;
       backdrop-filter: blur(10px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     article.post-card:hover {
       border-color: rgba(212, 175, 55, 0.5);
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-gold-glow);
+      transform: translateY(-3px);
     }
 
     .post-tag {
@@ -260,6 +295,7 @@
       font-size: 0.98rem;
     }
 
+    /* Sidebar & Widgets */
     .widget-box {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -272,7 +308,7 @@
     .widget-title {
       font-family: 'Cinzel', serif;
       color: var(--accent-gold);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
@@ -281,12 +317,31 @@
       padding-bottom: 0.8rem;
     }
 
+    .input-field {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-field:focus {
+      border-color: var(--accent-gold);
+    }
+
     .interactive-btn {
       width: 100%;
       background: rgba(212, 175, 55, 0.1);
       border: 1px solid var(--accent-gold);
       color: var(--accent-gold);
-      padding: 0.9rem;
+      padding: 0.85rem;
       border-radius: 8px;
       font-family: 'Cinzel', serif;
       font-weight: 700;
@@ -294,7 +349,6 @@
       letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-top: 1rem;
     }
 
     .interactive-btn:hover {
@@ -303,7 +357,7 @@
       box-shadow: 0 0 20px var(--accent-gold-glow);
     }
 
-    #deduction-result {
+    .result-box {
       margin-top: 1.2rem;
       font-size: 0.95rem;
       color: #e2e8f0;
@@ -315,35 +369,17 @@
       line-height: 1.6;
     }
 
-    .sidebar-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .sidebar-title {
-      font-family: 'Cinzel', serif;
-      color: var(--accent-gold);
-      font-size: 1.15rem;
-      margin-bottom: 1.2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.6rem;
-    }
-
     .sidebar-list {
       list-style: none;
     }
 
     .sidebar-list li {
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
       font-size: 0.92rem;
       color: var(--text-muted);
       display: flex;
       align-items: flex-start;
       gap: 0.7rem;
-      line-height: 1.5;
     }
 
     .sidebar-list li::before {
@@ -353,6 +389,26 @@
       margin-top: 0.3rem;
     }
 
+    .memory-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .memory-item button {
+      background: none;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--bg-primary);
@@ -360,7 +416,6 @@
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-top: 5rem;
     }
 
     footer p {
@@ -387,11 +442,10 @@
       <div class="logo">Patrick Jane</div>
       <ul class="nav-links">
         <li><a href="#historia">A Origem</a></li>
-        <li><a href="#leitura-fria">Leitura Fria & Quente</a></li>
+        <li><a href="#leitura-fria">Leitura Fria</a></li>
         <li><a href="#microexpressoes">Linguagem Corporal</a></li>
-        <li><a href="#memoria">Palácio da Memória</a></li>
-        <li><a href="#hipnose">Hipnose & Sugestão</a></li>
-        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="#memoria">Palácio Mental</a></li>
+        <li><a href="#hipnose">Hipnose</a></li>
       </ul>
     </nav>
   </header>
@@ -407,11 +461,19 @@
     </div>
   </section>
 
+  <!-- Filtro Interativo -->
+  <div class="filter-container">
+    <button class="filter-btn active" onclick="filtrarArtigos('todos')">Todos os Artigos</button>
+    <button class="filter-btn" onclick="filtrarArtigos('psicologia')">Psicologia</button>
+    <button class="filter-btn" onclick="filtrarArtigos('tecnica')">Técnicas Práticas</button>
+    <button class="filter-btn" onclick="filtrarArtigos('mnemonica')">Mnemônica</button>
+  </div>
+
   <div class="container">
-    <main>
+    <main id="articles-wrapper">
       
-      <!-- Post 1: Origem e Conceito -->
-      <article class="post-card" id="historia">
+      <!-- Post 1 -->
+      <article class="post-card" data-category="psicologia" id="historia">
         <span class="post-tag">Origem & Trajetória</span>
         <h2 class="post-title">De Falso Médium a Detetive Mentalista: Quem é Patrick Jane?</h2>
         <div class="post-meta">
@@ -421,14 +483,14 @@
           <p>Patrick Jane é o protagonista da aclamada série <em>The Mentalist</em>. Criado no ambiente de um circo por seu pai, Jane aprendeu desde muito jovem a arte da ilusão, da prestidigitação e do estudo da natureza humana.</p>
           <p>Durante anos, ele usou essas habilidades para atuar como um falso médium psíquico de sucesso, enganando o público ao fingir se comunicar com os mortos. Sua vida mudou tragicamente quando insultou publicamente o assassino em série conhecido como <strong>Red John (John o Vermelho)</strong> em um programa de televisão, o que resultou no assassinato de sua esposa e filha.</p>
           <div class="highlight-box">
-            <strong>O Ponto de Virada:</strong> Abandonando a fraude paranormal, Jane ofereceu seus talentos de dedução e psicologia comportamental à CBI (California Bureau of Investigation) para resolver crimes difíceis e rastrear seu arqui-inimigo.
+            <strong>O Ponto de Virada:</strong> Abandonando a fraude paranormal, Jane ofereceu seus talentos de dedução e psicologia comportamental à CBI para resolver crimes difíceis e rastrear seu arqui-inimigo.
           </div>
           <p>O conceito essencial transmitido pelo personagem é de que <strong>médium de verdade não existe</strong>. Tudo se resume a observação afiada, psicologia prática, truques de ilusionismo e manipulação social estratégica.</p>
         </div>
       </article>
 
-      <!-- Post 2: Leitura Fria e Quente -->
-      <article class="post-card" id="leitura-fria">
+      <!-- Post 2 -->
+      <article class="post-card" data-category="tecnica" id="leitura-fria">
         <span class="post-tag">Psicologia Aplicada</span>
         <h2 class="post-title">Mecanismos de Leitura Fria e Leitura Quente</h2>
         <div class="post-meta">
@@ -441,145 +503,182 @@
           <p>A Leitura Fria consiste em obter informações sobre um indivíduo sem nenhum conhecimento prévio sobre ele, analisando em tempo real sua aparência, reações e comportamentos.</p>
           <ul>
             <li><strong>Análise de Indícios Físicos:</strong> Desgaste nos sapatos, marcas de aliança removida recentemente, postura, calos nas mãos, tipo de tecido das roupas e padrões de fala.</li>
-            <li><strong>Efeito Forer / Barnum:</strong> Utilização de frases genéricas que se aplicam a quase todas as pessoas, mas que parecem extremamente pessoais (ex: <em>"Você tem uma necessidade interna de ser estimado e admirado pelos outros"</em>).</li>
-            <li><strong>Tiroteio de Arco e Flecha (Rainbow Ruse):</strong> Atribuir simultaneamente duas características opostas a um indivíduo (ex: <em>"Geralmente você é quieto e reservado, mas quando está com amigos íntimos, torna-se o centro das atenções"</em>).</li>
+            <li><strong>Efeito Forer / Barnum:</strong> Utilização de frases genéricas que se aplicam a quase todas as pessoas, mas que parecem extremamente pessoais.</li>
+            <li><strong>Tiroteio de Arco e Flecha (Rainbow Ruse):</strong> Atribuir simultaneamente duas características opostas a um indivíduo.</li>
           </ul>
 
           <h3>2. Leitura Quente (Hot Reading)</h3>
-          <p>Consiste em obter informações sobre o indivíduo previamente de forma secreta e depois apresentá-las como se fossem deduções espontâneas ou "intuições". Jane frequentemente vasculha bolsas, gavetas ou redes sociais dos suspeitos antes do interrogatório para deixá-los atônitos.</p>
+          <p>Consiste em obter informações sobre o indivíduo previamente de forma secreta e depois apresentá-las como se fossem deduções espontâneas ou "intuições".</p>
         </div>
       </article>
 
-      <!-- Post 3: Microexpressões e Linguagem Corporal -->
-      <article class="post-card" id="microexpressoes">
+      <!-- Post 3 -->
+      <article class="post-card" data-category="tecnica" id="microexpressoes">
         <span class="post-tag">Linguagem Corporal</span>
         <h2 class="post-title">Decodificando Microexpressões e Mentiras</h2>
         <div class="post-meta">
           Por <span>Marcelo Paludetto</span> | Categoria: <span>Detecção de Mentiras</span> | Leitura: <span>6 min</span>
         </div>
         <div class="post-content">
-          <p>Patrick Jane não precisa de um polígrafo. Ele utiliza os princípios da neuropsicologia e das microexpressões faciais teorizados pelo psicólogo Paul Ekman.</p>
+          <p>Patrick Jane utiliza os princípios da neuropsicologia e das microexpressões faciais para identificar incoerências nos depoimentos dos suspeitos.</p>
           
-          <h3>Padrões Corporais Freqüentemente Analisados:</h3>
+          <h3>Padrões Corporais Frequentes:</h3>
           <ul>
             <li><strong>Assimetria Facial:</strong> Expressões genuínas costumam ser simétricas. Um sorriso que ativa apenas um lado do rosto indica desprezo ou falsidade.</li>
-            <li><strong>Microexpressões Subliminares:</strong> Emoções reais duram fração de segundo (entre 1/25 a 1/5 de segundo) antes de a mente consciente tentar disfarçar.</li>
-            <li><strong>Dilatação de Pupila & Frequência de Piscar:</strong> O aumento do estresse cognitivo ao mentir dilata as pupilas e altera a taxa de piscadela.</li>
-            <li><strong>Micro-gestos Involuntários (Pacificação):</strong> Tocar o pescoço, ajustar o colarinho ou cobrir a fossa jugular são sinais involuntários de ansiedade e tentativa de auto-apaziguamento.</li>
+            <li><strong>Microexpressões Subliminares:</strong> Emoções reais duram fração de segundo antes de a mente consciente tentar disfarçar.</li>
+            <li><strong>Gestos de Pacificação:</strong> Tocar o pescoço ou ajustar acessórios são sinais involuntários de ansiedade.</li>
           </ul>
         </div>
       </article>
 
-      <!-- Post 4: Palácio da Memória -->
-      <article class="post-card" id="memoria">
+      <!-- Post 4 -->
+      <article class="post-card" data-category="mnemonica" id="memoria">
         <span class="post-tag">Técnicas de Cognição</span>
         <h2 class="post-title">O Palácio da Memória: Memorização Mnemônica de Alto Nível</h2>
         <div class="post-meta">
           Por <span>Marcelo Paludetto</span> | Categoria: <span>Mnemônica</span> | Leitura: <span>5 min</span>
         </div>
         <div class="post-content">
-          <p>Ao longo da série, Jane demonstra uma capacidade extraordinária de lembrar baralhos inteiros de cartas, nomes de dezenas de pessoas e detalhes sutis de cenas de crime. O segredo é o <strong>Método de Loci</strong> ou <strong>Palácio da Memória</strong>.</p>
+          <p>Jane utiliza o <strong>Método de Loci</strong> (Palácio da Memória) para guardar e recuperar volumes maciços de informação com precisão cirúrgica.</p>
           <div class="highlight-box">
-            <strong>Como Construir um Palácio da Memória:</strong>
+            <strong>Passo a Passo Mnemônico:</strong>
             <ol style="margin-top: 0.5rem;">
-              <li>Escolha um local físico extremamente familiar (ex: a casa da sua infância).</li>
-              <li>Estabeleça uma rota fixa por entre os cômodos.</li>
-              <li>Converta as informações que deseja lembrar em imagens exageradas, cômicas ou chocantes.</li>
-              <li>Posicione cada imagem em um móvel ou ponto específico do seu percurso mental.</li>
-              <li>Para recuperar os dados, basta caminhar mentalmente pela rota.</li>
+              <li>Escolha um local físico extremamente familiar.</li>
+              <li>Estabeleça uma rota fixa entre os cômodos.</li>
+              <li>Converta as informações em imagens visuais marcantes.</li>
+              <li>Associe as imagens aos cômodos da sua jornada mental.</li>
             </ol>
           </div>
-        </div>
-      </article>
-
-      <!-- Post 5: Hipnose, Sugestão e Indução Rápida -->
-      <article class="post-card" id="hipnose">
-        <span class="post-tag">Hipnose & Ilusionismo</span>
-        <h2 class="post-title">Hipnose Ericksoniana, Indução Rápida e Sugestão Subliminar</h2>
-        <div class="post-meta">
-          Por <span>Marcelo Paludetto</span> | Categoria: <span>Manipulação Psicológica</span> | Leitura: <span>8 min</span>
-        </div>
-        <div class="post-content">
-          <p>Patrick Jane frequentemente coloca suspeitos ou testemunhas em transe em questão de segundos. Embora na TV o efeito seja dramatizado, os métodos são baseados na <strong>Hipnose Ericksoniana</strong> e em técnicas de confusão sensorial.</p>
-          
-          <h3>Técnicas de Indução Utilizadas:</h3>
-          <ul>
-            <li><strong>Ruptura de Padrão (Pattern Interrupt):</strong> Interromper um gesto social automático (como estender a mão para cumprimentar e subitamente segurar o pulso do sujeito). Isso cria um breve milissegundo de desorientação mental no qual a mente fica altamente sugestionável.</li>
-            <li><strong>Acompanhar e Conduzir (Pacing and Leading):</strong> Sincronizar o ritmo da respiração, a velocidade da fala e o tom de voz com o do indivíduo para estabelecer *rapport* instantâneo antes de guiar seus pensamentos.</li>
-            <li><strong>Ancoragem Emocional:</strong> Associar um toque físico (como um leve aperto no ombro) a um estado mental de relaxamento ou medo.</li>
-          </ul>
         </div>
       </article>
 
     </main>
 
     <aside>
-      <!-- Widget Interativo de Análise -->
-      <div class="widget-box" id="simulador">
-        <div class="widget-title">🧠 Teste de Análise Mentalista</div>
-        <p style="font-size: 0.88rem; color: var(--text-muted);">Descubra o padrão psicológico de leitura com base no seu comportamento imediato nesta página.</p>
-        <button class="interactive-btn" onclick="executarDeducaoAvançada()">Iniciar Leitura Fria</button>
-        <div id="deduction-result"></div>
+      <!-- Widget 1: Simulador de Leitura Fria Interativo (JavaScript) -->
+      <div class="widget-box">
+        <div class="widget-title">🔍 Simulador de Dedução Instantânea</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Digite o seu primeiro nome para uma demonstração de perfil psicológico baseado em estatística comportamental:</p>
+        <input type="text" id="userName" class="input-field" placeholder="Seu primeiro nome...">
+        <button class="interactive-btn" onclick="gerarPerfilDeduçao()">Analisar Perfil</button>
+        <div id="deduction-result" class="result-box"></div>
       </div>
 
-      <!-- Sidebar Section: Hábitos de Patrick Jane -->
-      <div class="sidebar-section">
-        <h3 class="sidebar-title">Hábitos Marcastes de Jane</h3>
+      <!-- Widget 2: Gerenciador do Palácio da Memória (JavaScript) -->
+      <div class="widget-box">
+        <div class="widget-title">🏰 Criador de Palácio Mental</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Adicione itens à sua rota mnemônica (salvo localmente):</p>
+        <input type="text" id="memoryInput" class="input-field" placeholder="Ex: Chaveiro na mesa da sala">
+        <button class="interactive-btn" onclick="adicionarItemMemoria()">Guardar no Palácio</button>
+        <div id="memoryList" style="margin-top: 1rem;"></div>
+      </div>
+
+      <!-- Sidebar Section 3: Hábitos -->
+      <div class="widget-box">
+        <div class="widget-title">☕ Hábitos Marcastes de Jane</div>
         <ul class="sidebar-list">
-          <li>Sempre oferece uma xícara de chá para desarmar emocionalmente as pessoas.</li>
-          <li>Usa terno de três peças sem gravata para passar imagem de sofisticação e desconforto com autoridade rígida.</li>
-          <li>Dorme no sofá do escritório da CBI para manter foco obsessivo.</li>
-          <li>Manipula o ambiente para provocar reações genuínas nos suspeitos.</li>
+          <li>Sempre oferece uma xícara de chá para desarmar pessoas.</li>
+          <li>Usa terno de três peças sem gravata.</li>
+          <li>Manipula a cena para provocar reações genuínas.</li>
         </ul>
-      </div>
-
-      <!-- Sidebar Section: Glossário Técnico -->
-      <div class="sidebar-section">
-        <h3 class="sidebar-title">Glossário do Mentalismo</h3>
-        <ul class="sidebar-list">
-          <li><strong>Misdirection:</strong> Desvio de atenção intencional.</li>
-          <li><strong>Rapport:</strong> Conexão de confiança instantânea.</li>
-          <li><strong>Cold Reading:</strong> Leitura sem conhecimento prévio.</li>
-          <li><strong>Hot Reading:</strong> Uso de informação secreta obtida antes.</li>
-          <li><strong>Shotgunning:</strong> Lançar várias frases até acertar uma.</li>
-        </ul>
-      </div>
-
-      <!-- Sidebar Section: Frases Icônicas -->
-      <div class="sidebar-section">
-        <h3 class="sidebar-title">Frases Notáveis</h3>
-        <p style="font-size: 0.88rem; font-style: italic; color: #cbd5e1; margin-bottom: 0.8rem;">
-          "A verdade é a única coisa na qual você pode confiar, porque todo o resto muda."
-        </p>
-        <p style="font-size: 0.88rem; font-style: italic; color: #cbd5e1;">
-          "Para ver a verdade, basta parar de olhar para as mentiras que você conta a si mesmo."
-        </p>
       </div>
     </aside>
   </div>
 
   <footer>
     <p>&copy; 2026 Blog de Mentalismo & Psicologia Comportamental — Homenagem a <em>The Mentalist</em> (Patrick Jane).</p>
-    <p style="font-size: 0.8rem; opacity: 0.6;">Conteúdo educativo sobre técnicas ilusionistas, comunicação não-verbal e neuropsicologia.</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Desenvolvido com HTML5, CSS3 e JavaScript Integrado.</p>
   </footer>
 
+  <!-- Código JavaScript Integrado -->
   <script>
-    function executarDeducaoAvançada() {
+    // 1. Algoritmo de Leitura Fria Dinâmica
+    function gerarPerfilDeduçao() {
+      const nomeInput = document.getElementById('userName').value.trim();
       const res = document.getElementById('deduction-result');
-      res.style.display = 'block';
-      res.innerHTML = '<em>Analisando tempo de rolagem, padrão de clique e postura de navegação...</em>';
       
-      const analises = [
-        "<strong>Análise Comportamental:</strong><br>Você é uma pessoa analítica que busca respostas além da superfície. Ao acessar este blog, seu objetivo não é apenas entretenimento, mas entender o funcionamento prático da mente. Você tende a ser cético em relação a promessas milagrosas, mas fascinado por métodos comprovados de lógica e observação.",
-        "<strong>Análise Comportamental:</strong><br>Sua atenção aos detalhes é superior à média. Você valoriza o autocontrole emocional e prefere observar as situações antes de se posicionar em um ambiente social novo. Tem um forte senso de justiça e pouca paciência para contradições.",
-        "<strong>Análise Comportamental:</strong><br>Você possui uma forte intuição, mas prefere fundamentá-la em dados concretos. Às vezes sente que as pessoas ao seu redor ignoram o óbvio, o que gera uma leve frustração em conversas superficiais."
+      if (!nomeInput) {
+        res.style.display = 'block';
+        res.innerHTML = '<span style="color: #ef4444;">Por favor, digite seu nome para que o mentalista possa fazer a leitura.</span>';
+        return;
+      }
+
+      res.style.display = 'block';
+      res.innerHTML = '<em>Observando padrões verbais e reações...</em>';
+
+      const perfis = [
+        `<strong>Leitura para ${nomeInput}:</strong><br>Você é alguém com um senso crítico aguçado. Embora demonstre calmaria externamente, sua mente está constantemente analisando os detalhes do ambiente. Você busca segurança, mas detesta rotinas pré-definidas impostas por terceiros.`,
+        `<strong>Leitura para ${nomeInput}:</strong><br>Percebo que você valoriza a lealdade acima de tudo. Tem uma habilidade natural para identificar quando as pessoas não estão sendo 100% sinceras com você, embora muitas vezes prefira guardar essa observação para si.`,
+        `<strong>Leitura para ${nomeInput}:</strong><br>Você possui uma forte reserva de capacidade criativa que ainda não explorou totalmente. Às vezes é extroverto e sociável, mas há momentos em que sente uma necessidade imperativa de se isolar para recarregar as energias.`
       ];
 
       setTimeout(() => {
-        const index = Math.floor(Math.random() * analises.length);
-        res.innerHTML = analises[index];
-      }, 1200);
+        // Seleção baseada no comprimento do nome para consistência
+        const index = nomeInput.length % perfis.length;
+        res.innerHTML = perfis[index];
+      }, 1000);
     }
+
+    // 2. Gerenciador de Itens do Palácio da Memória (CRUD Simples)
+    let palacioMemoria = JSON.parse(localStorage.getItem('palacioMemoria')) || [
+      "Quarto: Relógio antigo",
+      "Cozinha: Xícara de Chá"
+    ];
+
+    function renderizarMemoria() {
+      const container = document.getElementById('memoryList');
+      container.innerHTML = '';
+      
+      palacioMemoria.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'memory-item';
+        div.innerHTML = `
+          <span>📍 ${item}</span>
+          <button onclick="removerItemMemoria(${index})">&times;</button>
+        `;
+        container.appendChild(div);
+      });
+
+      localStorage.setItem('palacioMemoria', JSON.stringify(palacioMemoria));
+    }
+
+    function adicionarItemMemoria() {
+      const input = document.getElementById('memoryInput');
+      const text = input.value.trim();
+      
+      if (text !== '') {
+        palacioMemoria.push(text);
+        input.value = '';
+        renderizarMemoria();
+      }
+    }
+
+    function removerItemMemoria(index) {
+      palacioMemoria.splice(index, 1);
+      renderizarMemoria();
+    }
+
+    // 3. Sistema de Filtro de Artigos
+    function filtrarArtigos(categoria) {
+      const artigos = document.querySelectorAll('article.post-card');
+      const botoes = document.querySelectorAll('.filter-btn');
+
+      botoes.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      artigos.forEach(artigo => {
+        if (categoria === 'todos' || artigo.getAttribute('data-category') === categoria) {
+          artigo.style.display = 'block';
+        } else {
+          artigo.style.display = 'none';
+        }
+      });
+    }
+
+    // Inicialização ao carregar a página
+    window.onload = function() {
+      renderizarMemoria();
+    };
   </script>
 
 </body>

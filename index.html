@@ -1,27 +1,455 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mentalist | O Artefato de Patrick Jane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #0a0b0e;
+      --bg-secondary: #12151e;
+      --bg-card: rgba(22, 26, 38, 0.7);
+      --accent-gold: #d4af37;
+      --accent-gold-glow: rgba(212, 175, 55, 0.3);
+      --accent-crimson: #8b0000;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 40%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-gold);
+      border-radius: 4px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 11, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-gold-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+      text-shadow: 0 0 8px var(--accent-gold-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-size: 1rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3.2rem;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 900;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .quote-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent-gold);
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #cbd5e1;
+      text-align: left;
+      margin-top: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Layout Structure */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2.8fr 1.2fr;
+      gap: 3rem;
+    }
+
+    /* Main Articles Section */
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-gold-glow);
+    }
+
+    .post-tag {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold);
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .post-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .post-meta span {
+      color: var(--accent-gold);
+    }
+
+    .post-content {
+      color: #cbd5e1;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1rem;
+    }
+
+    /* Interactive Deduction Widget */
+    .widget-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .widget-title {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .interactive-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .interactive-btn:hover {
+      background: var(--accent-gold);
+      color: var(--bg-primary);
+      box-shadow: 0 0 15px var(--accent-gold-glow);
+    }
+
+    #deduction-result {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      display: none;
+      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 6px;
+      border-left: 2px solid var(--accent-gold);
+    }
+
+    /* Sidebar Rules */
+    .sidebar-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-title {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .sidebar-list {
+      list-style: none;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-list li::before {
+      content: "◆";
+      color: var(--accent-gold);
+      font-size: 0.6rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Meu blog tech</h1>
-<p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
+
+  <header>
+    <nav>
+      <div class="logo">Patrick Jane</div>
+      <ul class="nav-links">
+        <li><a href="#observacao">Observação</a></li>
+        <li><a href="#leitura-fria">Leitura Fria</a></li>
+        <li><a href="#palacio">Palácio da Memória</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-subtitle">Arquivos da Mente & Ilusionismo</div>
+    <h1 class="hero-title">A Arte do Mentalismo & Dedução</h1>
+    <p class="hero-description">Desmistificando os truques de observação, microexpressões e manipulação psicológica utilizados por Patrick Jane para decifrar a mente humana.</p>
+    <div class="quote-box">
+      "Não existem videntes. O que existe é uma capacidade aguçada de prestar atenção ao que os outros desesperadamente tentam esconder."
+      <br><strong style="color: var(--accent-gold); display: inline-block; margin-top: 0.5rem;">— Patrick Jane</strong>
+    </div>
+  </section>
+
+  <div class="container">
+    <main>
+      
+      <article class="post-card" id="observacao">
+        <span class="post-tag">Técnica Fundamental</span>
+        <h2 class="post-title">Hiperobservação: Lendo Detalhes Invisíveis</h2>
+        <div class="post-meta">
+          Por <span>Marcelo Paludetto</span> | Categoria: <span>Linguagem Corporal</span>
+        </div>
+        <div class="post-content">
+          <p>O pilar principal do mentalismo praticado por Patrick Jane não é magia, mas sim a observação treinada ao limite. A maioria das pessoas navega pelo mundo em piloto automático, ignorando pequenos sinais visuais e comportamentais.</p>
+          <p>Para ler uma pessoa instantaneamente, observe três fatores críticos:</p>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: #cbd5e1;">
+            <li><strong>Calçado e Vestuário:</strong> Revelam nível socioeconômico, atenção aos detalhes e estado emocional recente.</li>
+            <li><strong>Assimetria Facial:</strong> Microexpressões involuntárias duram milissegundos e denunciam quando uma emoção é forçada.</li>
+            <li><strong>Postura das Mãos:</strong> Mãos escondidas ou fechadas indicam defensiva ou ocultamento de informação.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="post-card" id="leitura-fria">
+        <span class="post-tag">Psicologia Aplicada</span>
+        <h2 class="post-title">O Efeito Forer e a Leitura Fria</h2>
+        <div class="post-meta">
+          Por <span>Marcelo Paludetto</span> | Categoria: <span>Manipulação Verbal</span>
+        </div>
+        <div class="post-content">
+          <p>A "Leitura Fria" é a técnica de fazer declarações genéricas que parecem assustadoramente específicas para o ouvinte. Jane utilizava o Efeito Forer (ou Barnum), onde indivíduos identificam significados pessoais em descrições universais.</p>
+          <p>Afirmações como <em>"Você tem uma grande reserva de capacidade não utilizada"</em> ou <em>"Às vezes você é extroverto, mas em outros momentos é reservado"</em> criam conexão imediata e fazem a pessoa revelar mais dados sem perceber.</p>
+        </div>
+      </article>
+
+      <article class="post-card" id="palacio">
+        <span class="post-tag">Memorização</span>
+        <h2 class="post-title">O Palácio da Memória de Jane</h2>
+        <div class="post-meta">
+          Por <span>Marcelo Paludetto</span> | Categoria: <span>Cognição</span>
+        </div>
+        <div class="post-content">
+          <p>Como lembrar o nome, endereço e detalhes de dezenas de suspeitos instantaneamente? A resposta é o método de loci, popularmente conhecido como Palácio da Memória.</p>
+          <p>Atribuindo informações a locais físicos conhecidos em sua mente, Jane conseguia caminhar por suas memórias como se estivesse explorando uma casa familiar, garantindo retenção absoluta de dados.</p>
+        </div>
+      </article>
+
+    </main>
+
+    <aside>
+      <div class="widget-box" id="simulador">
+        <div class="widget-title">👁️ Teste de Dedução</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Clique abaixo para acionar a análise mentalista rápida sobre o perfil do visitante.</p>
+        <button class="interactive-btn" onclick="executarDeducao()">Analisar Meu Perfil</button>
+        <div id="deduction-result"></div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Regras do Mentalista</h3>
+        <ul class="sidebar-list">
+          <li>Nunca admita que é um truque.</li>
+          <li>Controle o ritmo da conversa.</li>
+          <li>Faça perguntas disfarçadas de afirmações.</li>
+          <li>Aprecie uma boa xícara de chá.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Tópicos Populares</h3>
+        <ul class="sidebar-list">
+          <li>Sugestão Hipnótica</li>
+          <li>Microexpressões Faciais</li>
+          <li>Linguagem Não-Verbal</li>
+          <li>Enganando Detectores de Mentira</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Blog de Mentalismo — Inspirado na obra de Patrick Jane (The Mentalist).</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Desenvolvido para entusiastas de psicologia comportamental e dedução.</p>
+  </footer>
+
+  <script>
+    function executarDeducao() {
+      const res = document.getElementById('deduction-result');
+      res.style.display = 'block';
+      res.innerHTML = '<em>Analisando padrões...</em>';
+      
+      setTimeout(() => {
+        res.innerHTML = `
+          <strong>Dedução do Mentalista:</strong><br>
+          Você é uma pessoa que valoriza a lógica, mas frequentemente confia na sua intuição. Busca conhecimento prático e tem pouca paciência para redundâncias. Atualmente, está buscando dominar uma habilidade que os outros consideram incomum.
+        `;
+      }, 1000);
+    }
+  </script>
+
 </body>
 </html>
-<title>Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h2>Meu primeiro post</h2>
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de tecnologia.</p>
-<p>Por: Marcelo Paludetto</p>
-<header>
-<h1>Meu blog tech</h1>
-<p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
-</header>
-<main>
-<h2>Meu primeiro post</h2>
-<p>Por: Marcelo Paludetto</p>
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de tecnologia.</p>
-</main>

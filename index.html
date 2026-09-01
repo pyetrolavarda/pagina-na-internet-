@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patrick Jane — Plataforma Definitiva de Mentalismo</title>
+  
+  <!-- Tipografia Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- ESTILOS CSS -->
   <style>
     :root {
       --bg-primary: #07080b;
       --bg-secondary: #0e1117;
       --bg-card: rgba(18, 22, 32, 0.88);
-      --bg-card-hover: rgba(26, 31, 46, 0.95);
       --accent-gold: #d4af37;
       --accent-gold-light: #f3e5ab;
       --accent-gold-glow: rgba(212, 175, 55, 0.3);
@@ -53,7 +55,7 @@
       border-radius: 4px;
     }
 
-    /* Header & Navbar */
+    /* Cabeçalho e Navegação */
     header {
       position: sticky;
       top: 0;
@@ -103,7 +105,7 @@
       text-shadow: 0 0 8px var(--accent-gold-glow);
     }
 
-    /* Hero */
+    /* Seção Principal (Hero) */
     .hero {
       position: relative;
       padding: 5rem 2rem 3rem;
@@ -168,7 +170,7 @@
       font-size: 0.95rem;
     }
 
-    /* Filters */
+    /* Filtros Interativos */
     .filter-container {
       max-width: 1300px;
       margin: 1rem auto 0;
@@ -197,7 +199,7 @@
       box-shadow: 0 0 10px var(--accent-gold-glow);
     }
 
-    /* Grid Layout */
+    /* Layout em Grelha */
     .container {
       max-width: 1300px;
       margin: 2rem auto 4rem;
@@ -207,7 +209,7 @@
       gap: 3.5rem;
     }
 
-    /* Articles */
+    /* Cards de Artigos */
     article.post-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -295,7 +297,7 @@
       font-size: 0.98rem;
     }
 
-    /* Sidebar & Widgets */
+    /* Widgets e Lateral */
     .widget-box {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -407,6 +409,7 @@
       color: #ef4444;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1rem;
     }
 
     footer {
@@ -437,6 +440,7 @@
 </head>
 <body>
 
+  <!-- Menu de Navegação -->
   <header>
     <nav>
       <div class="logo">Patrick Jane</div>
@@ -445,11 +449,11 @@
         <li><a href="#leitura-fria">Leitura Fria</a></li>
         <li><a href="#microexpressoes">Linguagem Corporal</a></li>
         <li><a href="#memoria">Palácio Mental</a></li>
-        <li><a href="#hipnose">Hipnose</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Cabeçalho Principal -->
   <section class="hero">
     <div class="hero-badge">Análise Psicológica & Ilusionismo</div>
     <h1 class="hero-title">O Artefato da Mente: O Guia Definitivo do Mentalismo</h1>
@@ -461,18 +465,19 @@
     </div>
   </section>
 
-  <!-- Filtro Interativo -->
+  <!-- Filtro de Categorias (JS) -->
   <div class="filter-container">
-    <button class="filter-btn active" onclick="filtrarArtigos('todos')">Todos os Artigos</button>
-    <button class="filter-btn" onclick="filtrarArtigos('psicologia')">Psicologia</button>
-    <button class="filter-btn" onclick="filtrarArtigos('tecnica')">Técnicas Práticas</button>
-    <button class="filter-btn" onclick="filtrarArtigos('mnemonica')">Mnemônica</button>
+    <button class="filter-btn active" onclick="filtrarArtigos(event, 'todos')">Todos os Artigos</button>
+    <button class="filter-btn" onclick="filtrarArtigos(event, 'psicologia')">Psicologia</button>
+    <button class="filter-btn" onclick="filtrarArtigos(event, 'tecnica')">Técnicas Práticas</button>
+    <button class="filter-btn" onclick="filtrarArtigos(event, 'mnemonica')">Mnemônica</button>
   </div>
 
+  <!-- Conteúdo Principal -->
   <div class="container">
     <main id="articles-wrapper">
       
-      <!-- Post 1 -->
+      <!-- Artigo 1 -->
       <article class="post-card" data-category="psicologia" id="historia">
         <span class="post-tag">Origem & Trajetória</span>
         <h2 class="post-title">De Falso Médium a Detetive Mentalista: Quem é Patrick Jane?</h2>
@@ -489,7 +494,7 @@
         </div>
       </article>
 
-      <!-- Post 2 -->
+      <!-- Artigo 2 -->
       <article class="post-card" data-category="tecnica" id="leitura-fria">
         <span class="post-tag">Psicologia Aplicada</span>
         <h2 class="post-title">Mecanismos de Leitura Fria e Leitura Quente</h2>
@@ -512,7 +517,7 @@
         </div>
       </article>
 
-      <!-- Post 3 -->
+      <!-- Artigo 3 -->
       <article class="post-card" data-category="tecnica" id="microexpressoes">
         <span class="post-tag">Linguagem Corporal</span>
         <h2 class="post-title">Decodificando Microexpressões e Mentiras</h2>
@@ -531,7 +536,7 @@
         </div>
       </article>
 
-      <!-- Post 4 -->
+      <!-- Artigo 4 -->
       <article class="post-card" data-category="mnemonica" id="memoria">
         <span class="post-tag">Técnicas de Cognição</span>
         <h2 class="post-title">O Palácio da Memória: Memorização Mnemônica de Alto Nível</h2>
@@ -554,43 +559,45 @@
 
     </main>
 
+    <!-- Barra Lateral com Widgets Interativos -->
     <aside>
-      <!-- Widget 1: Simulador de Leitura Fria Interativo (JavaScript) -->
+      <!-- Widget 1: Simulador de Leitura Fria -->
       <div class="widget-box">
         <div class="widget-title">🔍 Simulador de Dedução Instantânea</div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Digite o seu primeiro nome para uma demonstração de perfil psicológico baseado em estatística comportamental:</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Digite o seu primeiro nome para uma demonstração de perfil psicológico:</p>
         <input type="text" id="userName" class="input-field" placeholder="Seu primeiro nome...">
         <button class="interactive-btn" onclick="gerarPerfilDeduçao()">Analisar Perfil</button>
         <div id="deduction-result" class="result-box"></div>
       </div>
 
-      <!-- Widget 2: Gerenciador do Palácio da Memória (JavaScript) -->
+      <!-- Widget 2: Gerenciador do Palácio da Memória -->
       <div class="widget-box">
         <div class="widget-title">🏰 Criador de Palácio Mental</div>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Adicione itens à sua rota mnemônica (salvo localmente):</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Adicione itens à sua rota mnemônica:</p>
         <input type="text" id="memoryInput" class="input-field" placeholder="Ex: Chaveiro na mesa da sala">
         <button class="interactive-btn" onclick="adicionarItemMemoria()">Guardar no Palácio</button>
         <div id="memoryList" style="margin-top: 1rem;"></div>
       </div>
 
-      <!-- Sidebar Section 3: Hábitos -->
+      <!-- Widget 3: Hábitos -->
       <div class="widget-box">
-        <div class="widget-title">☕ Hábitos Marcastes de Jane</div>
+        <div class="widget-title">☕ Hábitos de Patrick Jane</div>
         <ul class="sidebar-list">
           <li>Sempre oferece uma xícara de chá para desarmar pessoas.</li>
           <li>Usa terno de três peças sem gravata.</li>
-          <li>Manipula a cena para provocar reações genuínas.</li>
+          <li>Manipula o ambiente para provocar reações genuínas.</li>
         </ul>
       </div>
     </aside>
   </div>
 
+  <!-- Rodapé -->
   <footer>
     <p>&copy; 2026 Blog de Mentalismo & Psicologia Comportamental — Homenagem a <em>The Mentalist</em> (Patrick Jane).</p>
-    <p style="font-size: 0.8rem; opacity: 0.6;">Desenvolvido com HTML5, CSS3 e JavaScript Integrado.</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Desenvolvido com HTML5, CSS3 e JavaScript Integrado por Marcelo Paludetto.</p>
   </footer>
 
-  <!-- Código JavaScript Integrado -->
+  <!-- CÓDIGO JAVASCRIPT -->
   <script>
     // 1. Algoritmo de Leitura Fria Dinâmica
     function gerarPerfilDeduçao() {
@@ -613,13 +620,12 @@
       ];
 
       setTimeout(() => {
-        // Seleção baseada no comprimento do nome para consistência
         const index = nomeInput.length % perfis.length;
         res.innerHTML = perfis[index];
       }, 1000);
     }
 
-    // 2. Gerenciador de Itens do Palácio da Memória (CRUD Simples)
+    // 2. Gerenciador do Palácio da Memória
     let palacioMemoria = JSON.parse(localStorage.getItem('palacioMemoria')) || [
       "Quarto: Relógio antigo",
       "Cozinha: Xícara de Chá"
@@ -659,12 +665,12 @@
     }
 
     // 3. Sistema de Filtro de Artigos
-    function filtrarArtigos(categoria) {
+    function filtrarArtigos(e, categoria) {
       const artigos = document.querySelectorAll('article.post-card');
       const botoes = document.querySelectorAll('.filter-btn');
 
       botoes.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      e.target.classList.add('active');
 
       artigos.forEach(artigo => {
         if (categoria === 'todos' || artigo.getAttribute('data-category') === categoria) {
@@ -675,7 +681,7 @@
       });
     }
 
-    // Inicialização ao carregar a página
+    // Carregar dados salvos ao iniciar
     window.onload = function() {
       renderizarMemoria();
     };
